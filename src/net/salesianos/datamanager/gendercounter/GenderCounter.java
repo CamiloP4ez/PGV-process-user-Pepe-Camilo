@@ -8,6 +8,7 @@ public class GenderCounter {
     String file = "files/users.txt";
     int male = 0;
     int female = 0;
+    
     try (BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
       String currentLine;
 
