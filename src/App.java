@@ -3,27 +3,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import net.salesianos.datamanager.filehelper.FileHelper;
-import net.salesianos.datamanager.processLauncher.*;
+import net.salesianos.datamanager.processlauncher.ProcessLauncher;
 
 public class App {
     public static void main(String[] args) throws Exception {
         ArrayList<String> lines = new ArrayList<>(FileHelper.getAllLines("files\\users.txt"));
-        ArrayList<Process> wordCounterSubprocesses = new ArrayList<>();
+        ArrayList<Process> usersProcess = new ArrayList<>();
 
         for (int i = 0; i < lines.size(); i++) {
             Process subprocess = ProcessLauncher.CountGender(lines.get(i), "gender-" + i + ".txt");
-            wordCounterSubprocesses.add(subprocess);
+            usersProcess.add(subprocess);
 
         }
 
-        for (Process process : wordCounterSubprocesses) {
+        for (Process process : usersProcess) {
             process.waitFor();
         }
 
         ArrayList<Process> wordCounterSubprocessesGrowns = new ArrayList<>();
 
         for (int i = 0; i < lines.size(); i++) {
-            Process subprocess = ProcessLauncher.CountGrownUps(lines.get(i), "growsup-" + i + ".txt");
+            Process subprocess = ProcessLauncher.CountGrownUps(lines.get(i), "grownups-" + i + ".txt");
             wordCounterSubprocessesGrowns.add(subprocess);
 
         }
@@ -32,18 +32,11 @@ public class App {
             process.waitFor();
         }
 
-        int maleCounter = 0;
-        int femaleCounter = 0;
-        int notGrownUp = 0;
-        int grownUp = 0;
+        System.out.println("En total hay: " + FileHelper.genderCounter(lines) + " hombres" + " y "
+                + (lines.size() - FileHelper.genderCounter(lines)) + " mujeres");
 
-        for (int i = 0; i < lines.size(); i++) {
-            File file = new File("./outputs/gender-" + i + ".txt");
-            String line = FileHelper.getWordCounter(file);
-            allNumbers = allNumbers + Integer.parseInt(line);
-            System.out.println(" En la linea " + i + " hay " + line + " palabras");
-            file.delete();
-        }
+        System.out.println("En total hay: " + FileHelper.grownupsCounter(lines) + " mayores " + " y "
+                + (lines.size() - FileHelper.grownupsCounter(lines)) + " menores");
 
     }
 
