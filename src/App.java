@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import net.salesianos.datamanager.filehelper.FileHelper;
-import net.salesianos.datamanager.processLauncher.ProcessLauncher;
+import net.salesianos.datamanager.processlauncher.ProcessLauncher;
 
 public class App {
     public static void main(String[] args) throws Exception {
