@@ -5,25 +5,12 @@ import java.io.FileReader;
 
 public class GenderCounter {
   public static void main(String[] args) {
-    String file = "files/users.txt";
-    int male = 0;
-    int female = 0;
-    
-    try (BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
-      String currentLine;
-
-      while ((currentLine = buffReader.readLine()) != null) {
-        String[] data = currentLine.split(",");
-        if (data[2].equals("H")) {
-          male++;
-        } else if (data[2].equals("M")) {
-          female++;
-        }
-      }
-
-    } catch (Exception e) {
-      // TODO: handle exception
+    String line = args[0];
+    String[] datauser = line.split(",");
+    if (datauser[2] == "H") {
+      System.out.println("Hombre");
+    } else {
+      System.out.println("Mujer");
     }
-    System.out.println("Hombres," + male + "\nMujeres," + female);
   }
 }
