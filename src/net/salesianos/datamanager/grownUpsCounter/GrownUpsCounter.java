@@ -1,4 +1,4 @@
-package net.salesianos.datamanager.grownupscounter;
+package net.salesianos.datamanager.grownUpsCounter;
 
 public class GrownUpsCounter {
   public static void main(String[] args) {
