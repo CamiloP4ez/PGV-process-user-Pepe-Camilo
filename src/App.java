@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import net.salesianos.datamanager.filehelper.FileHelper;
+import net.salesianos.datamanager.processLauncher.ProcessLauncher;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -10,7 +11,7 @@ public class App {
         ArrayList<Process> wordCounterSubprocesses = new ArrayList<>();
 
         for (int i = 0; i < lines.size(); i++) {
-            Process subprocess = CountWord(lines.get(i), "gender-" + i + ".txt");
+            Process subprocess = ProcessLauncher.CountGender(lines.get(i), "gender-" + i + ".txt");
             wordCounterSubprocesses.add(subprocess);
 
         }
@@ -18,21 +19,6 @@ public class App {
         for (Process process : wordCounterSubprocesses) {
             process.waitFor();
         }
-    }
-
-    public static Process CountWord(String line, String outFileName) throws IOException {
-        ProcessBuilder processBuilder = new ProcessBuilder("java",
-                "src\\net\\salesianos\\datamanager\\gendercounter\\GenderCounter.java",
-                line);
-        try {
-            String FileOutputRoute = "./src/net/salesianos/datamanager/outputs/";
-            processBuilder.redirectOutput(new File(FileOutputRoute + outFileName));
-            processBuilder.redirectError(new File(FileOutputRoute + "error.txt"));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return processBuilder.start();
     }
 
 }
