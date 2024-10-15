@@ -1,4 +1,4 @@
-package net.salesianos.datamanager.processLauncher;
+package net.salesianos.datamanager.processlauncher;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,9 +9,9 @@ public class ProcessLauncher {
         "src\\net\\salesianos\\datamanager\\gendercounter\\GenderCounter.java",
         line);
     try {
-      String FileOutputRoute = "./outputs/files/";
+      String FileOutputRoute = "outputs\\files\\gender\\";
       processBuilder.redirectOutput(new File(FileOutputRoute + outFileName));
-      processBuilder.redirectError(new File("./outputs/errors" + "errorGender.txt"));
+      processBuilder.redirectError(new File("./outputs/errors/" + "errorGender.txt"));
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -24,9 +24,9 @@ public class ProcessLauncher {
         "src\\net\\salesianos\\datamanager\\grownupscounter\\GrownUpsCounter.java",
         line);
     try {
-      String FileOutputRoute = "./outputs/files/";
+      String FileOutputRoute = "outputs\\files\\grownups\\";
       processBuilder.redirectOutput(new File(FileOutputRoute + outFileName));
-      processBuilder.redirectError(new File("./outputs/errors" + "errorGrowns.txt"));
+      processBuilder.redirectError(new File("./outputs/errors/" + "errorGrownups.txt"));
 
     } catch (Exception e) {
       e.printStackTrace();

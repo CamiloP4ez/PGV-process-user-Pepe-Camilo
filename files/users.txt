@@ -1,4 +1,3 @@
-Nombre,Género,Edad
 Ana,M,15
 Carlos,H,17
 María,M,16
