@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.IOException;
+
 import java.util.ArrayList;
 
 import net.salesianos.datamanager.filehelper.FileHelper;
@@ -20,15 +19,15 @@ public class App {
             process.waitFor();
         }
 
-        ArrayList<Process> wordCounterSubprocessesGrowns = new ArrayList<>();
+        ArrayList<Process> CounterSubprocessesGrowns = new ArrayList<>();
 
         for (int i = 0; i < lines.size(); i++) {
             Process subprocess = ProcessLauncher.CountGrownUps(lines.get(i), "grownups-" + i + ".txt");
-            wordCounterSubprocessesGrowns.add(subprocess);
+            CounterSubprocessesGrowns.add(subprocess);
 
         }
 
-        for (Process process : wordCounterSubprocessesGrowns) {
+        for (Process process : CounterSubprocessesGrowns) {
             process.waitFor();
         }
 
