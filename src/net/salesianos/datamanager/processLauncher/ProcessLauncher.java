@@ -1,4 +1,4 @@
-package net.salesianos.datamanager.processlauncher;
+package net.salesianos.datamanager.processLauncher;
 
 import java.io.File;
 import java.io.IOException;

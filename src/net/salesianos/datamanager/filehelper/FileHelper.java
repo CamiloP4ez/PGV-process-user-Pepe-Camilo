@@ -1,5 +1,6 @@
 package net.salesianos.datamanager.filehelper;
 
+import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.nio.charset.StandardCharsets;
@@ -56,6 +57,16 @@ public class FileHelper {
       return grownups;
     } catch (Exception e) {
       return -1;
+    }
+  }
+
+  public static void clearFiles(String fileRoute) {
+    ArrayList<String> lines = new ArrayList<>(getAllLines(fileRoute));
+    for (int i = 0; i < lines.size(); i++) {
+      File file = new File("outputs\\files\\gender\\gender-" + i + ".txt");
+      File file2 = new File("outputs\\files\\grownups\\grownups-" + i + ".txt");
+      file.delete();
+      file2.delete();
     }
   }
 
